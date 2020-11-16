@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import { media, setColor } from '../styles';
+import { media } from '../styles';
 import { MainButton, Title } from '../components/globals';
 import lock from '../assets/svgs/lock.svg';
 import user from '../assets/svgs/user.svg';
 import SimpleButton from '../components/globals/Buttons/SimpleButton';
-import img from '../assets/images/background_image.png';
+import HeroImg from '../assets/images/background_image.png';
 import {
   AuthInput,
   InputWrapper,
   LoginIcon,
 } from '../components/globals/Inputs';
+import Hero from '../components/globals/Hero';
 
 const Login = ({ className }) => {
   return (
     <main className={className}>
-      <section className="brand"></section>
+      <Hero className="brand" img={HeroImg} />
       <section className="access">
         <div className="signUp">
           <span>Don't have an account?</span>
@@ -48,6 +49,13 @@ export default styled(Login)`
   .brand {
     display: none;
   }
+  ${media.tablet`
+    .brand {
+      display: initial;
+    }
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+  `};
   .signUp {
     align-self: flex-end;
     margin-right: 40px;
@@ -68,14 +76,4 @@ export default styled(Login)`
       margin-top: 168px;
     }
   }
-  ${media.tablet`
-    .brand {
-      display: initial;
-      background: url(${img}) center/cover no-repeat;
-      background-image: url(${img}), ${setColor.imageColor};
-    }
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-columns:repeat(2,1fr);
-  `};
 `;

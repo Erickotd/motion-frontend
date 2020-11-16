@@ -19,10 +19,13 @@ export const setFlex = ({ x = 'center', y = 'center' } = {}) => {
   return `display:flex;align-items:${y};justify-content:${x}`;
 };
 
-// export const setBackground = ({ img = img, color = 'rgba(0,0,0,0)' } = {}) => {
-//   return `background: linear-gradient(${color}, ${color}),
-//     url(${img}) center/cover fixed no-repeat`;
-// };
+export const setHeroBackground = ({
+  img = 'https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+  color = 'rgba(0,0,0,0)',
+} = {}) => {
+  return `background: url(${img}) center/cover no-repeat;
+      background-image: url(${img}), ${setColor.imageColor};`;
+};
 
 export const setFontWeight = {
   normal: 'font-weight: 500',

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { setColor, setFont } from '../../styles';
+import { setColor, setFont } from './styles';
 
 const Globals = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -7,11 +7,12 @@ const Globals = createGlobalStyle`
 *{
  margin:0;
  padding:0;
- font-family: "Helvetica",serif;
  box-sizing:border-box;
 }
 body{
  font-size:100%;
+ font-family: "Helvetica",serif;
+ font-family: 'Roboto', sans-serif;
  color:${setColor.mainBlack};
  background:${setColor.mainWhite};
  ${setFont.main};
