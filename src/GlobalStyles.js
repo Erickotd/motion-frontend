@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { setColor, setFont } from './styles';
 
-const Globals = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 *{
@@ -40,4 +40,4 @@ p{
 }
 `;
 
-export default Globals;
+export default GlobalStyles;

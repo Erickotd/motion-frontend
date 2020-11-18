@@ -12,5 +12,4 @@ export default styled(Title)`
   ${setFontWeight.normal}
   ${setFont.main};
   color: ${setColor.mainBlack};
-  text-align: ${(props) => (props.center ? 'center' : 'left')};
 `;
