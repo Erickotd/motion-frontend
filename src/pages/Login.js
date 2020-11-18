@@ -24,6 +24,7 @@ import {
 
 const Login = ({ className, loginAction }) => {
   const history = useHistory();
+  const [Loading, setLoading] = useState(false);
   const [UserAccesInfo, setUserAccesInfo] = useState({
     email: 'ninecab303@pidouno.com',
     password: 'cxyaq123',
@@ -31,8 +32,13 @@ const Login = ({ className, loginAction }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const response = await loginAction(UserAccesInfo);
-    if (response.status === 200) history.push('/');
+    if (response.status === 200) {
+      history.push('/');
+    } else {
+      setLoading(false);
+    }
   };
 
   const onChangeHandler = (event, property) => {
@@ -46,7 +52,7 @@ const Login = ({ className, loginAction }) => {
       <section className="access">
         <div className="signUp">
           <span>Don't have an account?</span>
-          <SimpleButton title="Sign Up" />
+          <SimpleButton title="Sign Up" link="/auth/signup" />
         </div>
         <form className="signIn" onSubmit={handleSubmit}>
           <Title title="Sign in" />
@@ -70,7 +76,7 @@ const Login = ({ className, loginAction }) => {
               onChange={(e) => onChangeHandler(e, 'password')}
             />
           </InputWrapper>
-          <MainButton title="Sign in" type="submit" />
+          <MainButton title="Sign in" type="submit" loading={Loading} />
         </form>
       </section>
     </main>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feed, Login, Error } from './pages';
+import { Feed, Login, Error, SignUp } from './pages';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -9,7 +9,10 @@ function App() {
         <Route path="/" exact={true}>
           <Feed />
         </Route>
-        <Route path="/login">
+        <Route path="/auth/signup">
+          <SignUp />
+        </Route>
+        <Route path="/auth/login">
           <Login />
         </Route>
         <Route path="*">

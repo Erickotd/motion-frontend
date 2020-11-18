@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaSpinner } from 'react-icons/fa';
 import styled from 'styled-components';
 import {
   setColor,
@@ -9,8 +10,10 @@ import {
   setBackground,
 } from '../../../styles';
 
-const MainButton = ({ className, title }) => {
-  return <button className={className}>{title}</button>;
+const MainButton = ({ className, title, loading }) => {
+  return (
+    <button className={className}>{loading ? <FaSpinner /> : title}</button>
+  );
 };
 
 export default styled(MainButton)`
@@ -21,9 +24,13 @@ export default styled(MainButton)`
   text-transform: uppercase;
   ${setBackground.main};
   color: ${setColor.mainWhite};
-  font-size: ${setRem(12)};
+  font-size: ${setRem(14)};
   border: none;
   ${setFont.main};
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
   &:hover {
     ${setBackground.hover};
   }
