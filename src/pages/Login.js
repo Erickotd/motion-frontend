@@ -22,8 +22,8 @@ import {
   LoginIcon,
 } from '../components/globals/Inputs';
 
-const Login = ({ className, loginAction }) => {
-  const history = useHistory();
+const Login = ({ className, loginAction, authenticated }) => {
+  const { push } = useHistory();
   const [Loading, setLoading] = useState(false);
   const [UserAccesInfo, setUserAccesInfo] = useState({
     email: 'ninecab303@pidouno.com',
@@ -35,7 +35,7 @@ const Login = ({ className, loginAction }) => {
     setLoading(true);
     const response = await loginAction(UserAccesInfo);
     if (response.status === 200) {
-      history.push('/');
+      push('/');
     } else {
       setLoading(false);
     }
@@ -86,6 +86,7 @@ const Login = ({ className, loginAction }) => {
 const mapStateToProps = (state) => {
   return {
     error: state.loginReducer.error,
+    authenticated: state.loginReducer.authenticated,
   };
 };
 

@@ -8,11 +8,12 @@ const initialState = {
 };
 
 export const loginReducer = (state = initialState, action) => {
+  console.log('-->', action);
   switch (action.type) {
     case LOGIN: {
       return {
         ...state,
-        token: action.payload.token,
+        token: action.payload.access,
         user: action.payload.user,
         error: null,
         authenticated: true,
