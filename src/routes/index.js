@@ -1,8 +1,8 @@
 import React from 'react';
-import { Credentials, Error, Feed } from '../pages';
+import { Credentials } from '../pages';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AuthComponent from '../HOCs/AuthComponent';
-import { Navbar } from '../components';
+import PagesRoutes from '../pages/PagesRoutes';
 
 const Routes = () => {
   return (
@@ -10,7 +10,7 @@ const Routes = () => {
       <Router>
         <Switch>
           <Route path={'/auth'} component={AuthComponent(Credentials)} />
-          <Route exact path="/" component={AuthComponent(Feed)} />
+          <Route path={'/'} component={AuthComponent(PagesRoutes)} />
         </Switch>
       </Router>
     </>
