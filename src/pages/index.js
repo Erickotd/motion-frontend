@@ -1,7 +1,9 @@
+import Credentials from '../pages/Credentials';
+import Login from './Credentials/Login';
+import SignUp from './Credentials/SignUp';
+import Confirmation from './Credentials/Confirmation';
+import Verification from './Credentials/Verification';
 import Feed from './Feed';
-import Login from './Login';
 import Error from './Error';
-import SignUp from './SignUp';
-import PrivateRoute from './PrivateRoute';
 
-export { Feed, Login, Error, SignUp, PrivateRoute };
+export { Credentials, Confirmation, Verification, Login, SignUp, Feed, Error };

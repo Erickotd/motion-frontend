@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 import { setHeroBackground } from '../../styles';
+import { media } from '../../styles';
 
 const Hero = styled.section`
-  height: 100vh;
+  width: 40%;
+  display: none;
+  ${media.tablet`
+      display: initial;
+  `};
   ${(props) => setHeroBackground({ img: props.img })};
 `;
 

@@ -1,24 +1,16 @@
 import React from 'react';
-import { Error, Login, SignUp, Feed, PrivateRoute } from '../pages/index';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Credentials, Error, Feed } from '../pages';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AuthComponent from '../HOCs/AuthComponent';
+import { Navbar } from '../components';
 
 const Routes = () => {
   return (
     <>
       <Router>
         <Switch>
-          <PrivateRoute path="/" exact={true}>
-            <Feed />
-          </PrivateRoute>
-          <PrivateRoute path="/auth/signup" exact={true}>
-            <SignUp />
-          </PrivateRoute>
-          <PrivateRoute path="/auth/login" exact={true}>
-            <Login />
-          </PrivateRoute>
-          <PrivateRoute path="*">
-            <Error />
-          </PrivateRoute>
+          <Route path={'/auth'} component={AuthComponent(Credentials)} />
+          <Route exact path="/" component={AuthComponent(Feed)} />
         </Switch>
       </Router>
     </>
@@ -26,9 +18,3 @@ const Routes = () => {
 };
 
 export default Routes;
-
-// <Route path={'/auth'} component={Credentials} />
-// <Navbar>
-//   <Route exact path="/feed" component={AuthComponent(Feed)} />
-//   <Route render={() => <Redirect to={{ pathname: '/feed' }} />} />
-// </Navbar>
