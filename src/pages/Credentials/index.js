@@ -22,9 +22,14 @@ const Credentials = (props) => {
         <Route path="/auth/signup" exact component={SignUp} />
         <Route path="/auth/signup/sent" exact component={Confirmation} />
         <Route path="/auth/signup/validation" exact component={Verification} />
-        <Route path="*">
-          <Error />
-        </Route>
+        {props.location.pathname !== '/auth/login' &&
+          props.location.pathname !== '/auth/signup' &&
+          props.location.pathname !== '/auth/signup/sent' &&
+          props.location.pathname !== '/auth/signup/validation' && (
+            <Route path="/auth">
+              <Error />
+            </Route>
+          )}
       </RightContainer>
     </CredentialsWrapper>
   );

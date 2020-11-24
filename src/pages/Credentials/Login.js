@@ -7,6 +7,7 @@ import { loginAction } from '../../store/actions/loginActions';
 
 /* Styled components*/
 import styled from 'styled-components';
+import { setFlex, setRem } from '../../styles';
 
 /* Images */
 import lock from '../../assets/svgs/lock.svg';
@@ -47,33 +48,37 @@ const Login = ({ loginAction }) => {
 
   return (
     <>
-      <Header>
+      <CredentialsHeader>
         <span>Don't have an account?</span>
         <SimpleButton title="Sign Up" link="/auth/signup" />
-      </Header>
+      </CredentialsHeader>
       <Form onSubmit={handleSubmit}>
-        <Title title="Sign in" />
-        <InputWrapper>
-          <LoginIcon src={user} alt="user icon" />
-          <AuthInput
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={UserAccesInfo.email}
-            onChange={(e) => onChangeHandler(e, 'email')}
-          />
-        </InputWrapper>
-        <InputWrapper>
-          <LoginIcon src={lock} alt="lock icon" />
-          <AuthInput
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={UserAccesInfo.password}
-            onChange={(e) => onChangeHandler(e, 'password')}
-          />
-        </InputWrapper>
-        <MainButton title="Sign in" type="submit" loading={Loading} />
+        <FormBody>
+          <Title title="Sign in" />
+          <InputWrapper>
+            <LoginIcon src={user} alt="user icon" />
+            <AuthInput
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={UserAccesInfo.email}
+              onChange={(e) => onChangeHandler(e, 'email')}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <LoginIcon src={lock} alt="lock icon" />
+            <AuthInput
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={UserAccesInfo.password}
+              onChange={(e) => onChangeHandler(e, 'password')}
+            />
+          </InputWrapper>
+        </FormBody>
+        <FormFooter>
+          <MainButton title="Sign in" type="submit" loading={Loading} />
+        </FormFooter>
       </Form>
     </>
   );
@@ -88,11 +93,9 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, { loginAction })(Login);
 
-const Header = styled.div`
-  align-self: flex-end;
-  margin-right: 40px;
-  margin-top: 40px;
-  margin-bottom: 128px;
+const CredentialsHeader = styled.div`
+  ${setFlex('flex-end', 'center')};
+  padding: ${setRem(20)};
   span {
     margin-right: 17px;
   }
@@ -100,12 +103,25 @@ const Header = styled.div`
 
 const Form = styled.form`
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   h2 {
-    margin-bottom: 65px;
+    padding-bottom: ${setRem(20)};
   }
-  button {
-    margin-top: 168px;
+`;
+
+const FormBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FormFooter = styled.div`
+  width: 100%;
+  ${setFlex('center', 'center')};
+  span {
+    margin-right: 17px;
   }
 `;

@@ -15,8 +15,10 @@ export const setFont = {
   main: "font-family: 'Roboto', sans-serif;",
 };
 
-export const setFlex = ({ x = 'center', y = 'center' } = {}) => {
-  return `display:flex;align-items:${y};justify-content:${x}`;
+export const setFlex = (x, y) => {
+  return `display:flex;
+  justify-content:${x};
+  align-items:${y};`;
 };
 
 export const setHeroBackground = ({

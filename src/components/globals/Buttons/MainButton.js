@@ -10,9 +10,11 @@ import {
   setBackground,
 } from '../../../styles';
 
-const MainButton = ({ className, title, loading }) => {
+const MainButton = ({ className, title, loading = false, onClick }) => {
   return (
-    <button className={className}>{loading ? <FaSpinner /> : title}</button>
+    <button onClick={onClick} className={className}>
+      {loading ? <FaSpinner /> : title}
+    </button>
   );
 };
 

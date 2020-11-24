@@ -14,7 +14,16 @@ export default (WrappedComponent) => {
         history.push('/');
       } else if (authenticated) {
         history.push(path);
-      } else history.push('/auth/login');
+      } else if (
+        path === '/auth/signup' ||
+        path === '/auth/login' ||
+        path === '/auth/signup/sent' ||
+        path === '/auth/signup/validation'
+      ) {
+        history.push(path);
+      } else {
+        history.push('/auth/login');
+      }
     }, [authenticated]);
 
     return <WrappedComponent {...props} />;
